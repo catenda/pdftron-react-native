@@ -982,6 +982,22 @@ RCT_REMAP_METHOD(selectAll,
     }
 }
 
+RCT_REMAP_METHOD(exportPage,
+                 exportPageForDocumentViewTag:(nonnull NSNumber *)tag
+                 pathString:(NSString *)pathString
+                 pageNumber:(NSInteger)pageNumber
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+    @try {
+        [[self documentViewManager] exportPageForDocumentViewTag:tag pathString:pathString pageNumber:pageNumber];
+        resolve(nil);
+    }
+    @catch (NSException *exception) {
+        reject(@"save_failed", @"Failed to export page", [self errorFromException:exception]);
+    }
+}
+
 #pragma mark - Collaboration
 
 RCT_REMAP_METHOD(importAnnotationCommand,

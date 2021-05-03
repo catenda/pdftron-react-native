@@ -138,6 +138,8 @@
 
 - (void)selectAllForDocumentViewTag:(NSNumber *)tag;
 
+- (void)exportPageForDocumentViewTag:(NSNumber *)tag pathString:(NSString *)pathString pageNumber:(NSInteger)pageNumber;
+
 - (void)importAnnotationCommandForDocumentViewTag:(NSNumber *)tag xfdfCommand:(NSString *)xfdfCommand initialLoad:(BOOL)initialLoad;
 
 @end

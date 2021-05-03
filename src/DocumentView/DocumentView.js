@@ -773,6 +773,14 @@ export default class DocumentView extends PureComponent {
     return Promise.resolve();
   }
 
+  exportPage = (path, pageNumber = 1) => {
+    const tag = findNodeHandle(this._viewerRef);
+    if (tag != null) {
+      DocumentViewManager.exportPage(tag, path, pageNumber);
+    }
+    return Promise.resolve();
+  }
+
   _setNativeRef = (ref) => {
     this._viewerRef = ref;
   };

@@ -526,6 +526,8 @@ static const PTAnnotationToolbarKey PTAnnotationToolbarKeyItems = @"items";
 
 - (void)selectAll;
 
+- (void)exportPage:(NSString *)pathString pageNumber:(NSInteger)pageNumber;
+
 - (void)importAnnotationCommand:(NSString *)xfdfCommand initialLoad:(BOOL)initialLoad;
 
 @end

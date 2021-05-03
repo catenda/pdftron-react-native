@@ -3852,6 +3852,27 @@ NS_ASSUME_NONNULL_END
     }
 }
 
+- (void)exportPage:(NSString *)pathString pageNumber:(NSInteger)pageNumber
+{
+    PTPDFViewCtrl *pdfViewCtrl = self.currentDocumentViewController.pdfViewCtrl;
+    
+    NSLog(@"exportPage called");
+    PTPDFDraw *draw = [[PTPDFDraw alloc] initWithDpi: 92];
+
+    @try 
+    {
+        PTPDFDoc *doc = [[PTPDFDoc alloc] initWithFilepath: pathString];
+        [doc InitSecurityHandler];
+        [draw SetDPI: 92];
+        [draw Export:[[doc GetPageIterator: 1] Current] filename: pathString format: @"PNG"];
+    }
+    @catch(NSException *e)	
+    {
+        NSLog(@"%@", e.reason);
+    }
+
+}
+
 #pragma mark - Helper
 
 + (NSString *)PT_idAsNSString:(id)value
